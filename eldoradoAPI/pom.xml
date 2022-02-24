@@ -20,6 +20,14 @@
 		<java.version>1.8</java.version>
 	</properties>
 	
+	<distributionManagement>
+       <repository>
+         <id>internal.repo</id>
+         <name>Internal repo</name>
+         <url>..\eldoradoAPI\build</url>
+       </repository>
+   </distributionManagement>
+   
 	<dependencies>
 	
 		<dependency>
@@ -53,6 +61,19 @@
 					<executable>true</executable>
 				</configuration>
 			</plugin>
+			 <plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-source-plugin</artifactId>
+		        <executions>
+		          <execution>
+		            <id>attach-sources</id>
+		            <phase>install</phase>
+		            <goals>
+		              <goal>jar</goal>
+		            </goals>
+		          </execution>
+		        </executions>
+		      </plugin>
 		</plugins>
 	</build>
 
