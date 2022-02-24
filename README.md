@@ -1,5 +1,8 @@
 # EldoradoChallenge
 
+## LInguagem: Java
+## IDE: Spring Tool Suite 4
+
 ## Spring Boot 
 ### Foi utilizado o Spring Boot para a criação da API Rest
 
