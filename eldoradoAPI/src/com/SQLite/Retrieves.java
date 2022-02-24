@@ -80,22 +80,21 @@ public class Retrieves {
 		Connection conn = null;
 		Connect connect = new Connect();
 	
-		String sql = "SELECT distinct R.nameRequester, "
+		String sql = "SELECT distinct R.nameCustomers,"
 				+ "B.zipCode,"
 				+ "B.lat_Building, "
 				+ "B.long_Building,"
-				+ "CS.lat_Service, "
-				+ "CS.long_Service, "
-				+ "CS.dateFinished, "
+				+ "CS.lat_Service,"
+				+ "CS.long_Service,"
+				+ "CS.dateFinished,"
 				+ "CS.dateStarted,"
-				+ "P.namePackage, "
-				+ "Pi.urlPicture  "
-				+ "FROM CleanHouse_Services as CS\r\n"
+				+ "P.namePackage,"
+				+ "Pi.urlPicture FROM CleanHouses as CS "
 				+ "LEFT JOIN Packages as P ON P.codPackage == CS.codCleanHouse\r\n"
-				+ "LEFT JOIN Pictures as Pi ON Pi.codCleanHouses == CS.codCleanHouse\r\n"
-				+ "LEFT JOIN Building as B ON CS.idBuilding == B.id_Building\r\n"
-				+ "LEFT JOIN Requesters as R ON R.cpf == CS.cpf_Requester\r\n"
-				+ "WHERE dateStarted == '" + date + "' or dateFinished == '" + date + "';";
+				+ "LEFT JOIN Pictures as Pi ON Pi.codCleanHouse == CS.codCleanHouse \r\n"
+				+ "LEFT JOIN Building as B ON CS.id_Building == B.id_Building \r\n"
+				+ "LEFT JOIN Customers as R ON R.cpfCustomers == CS.cpfCustomers\r\n"
+				+ "WHERE dateStarted == '"+date+"' or dateFinished == '"+date+"';";
 		
 		
 		try{
@@ -110,7 +109,7 @@ public class Retrieves {
 				
 				RetrieveAll rall = new RetrieveAll();
 				
-				rall.setNameRequester(rs.getString("nameRequester"));
+				rall.setNameRequester(rs.getString("nameCustomers"));
 				rall.setLat_Building(rs.getString("lat_Building"));
 				rall.setLong_Building(rs.getString("long_Building"));
 				rall.setLat_Service(rs.getString("lat_Service"));
