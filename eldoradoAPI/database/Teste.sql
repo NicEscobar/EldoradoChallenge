@@ -43,10 +43,3 @@ insert into Pictures (urlPicture, datePicture, codCleanHouse) values ("https://w
 insert into Pictures (urlPicture, datePicture, codCleanHouse) values ("https://www.google.com/search?e=sitios&", "21/02/2022",2);
 
 select * from Pictures
-
-SELECT distinct Pi.urlPicture, P.namePackage, Pi.datePicture, Pi.codCleanHouse FROM Pictures as Pi 
-INNER JOIN Packages as P ON P.codPackage exists (select codPackage from Packages)
-WHERE P.codPackage == (SELECT codPackage FROM Packages WHERE namePackage == "Start Fresh 022")
-
-select PI.urlPicture, PI.datePicture from Pictures as PI
-where PI.codCleanHouse in (select codCleanHouse from CleanHouses where codPackage in (select codPackage from Packages where namePackage == "Return from the ashes 022"))
