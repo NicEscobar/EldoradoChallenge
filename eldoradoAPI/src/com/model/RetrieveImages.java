@@ -2,14 +2,26 @@ package com.model;
 
 public class RetrieveImages {
 
-	private String namePackage, datePicture, urlPicture;
-	private int codCleanHouses;
+	private String urlPicture, datePicture, lat_Building,long_Building,namePackage;
+	private int zipCode;
 	
-	public String getUrlPicture() {
-		return urlPicture;
+	public String getDatePicture() {
+		return datePicture;
 	}
-	public void setUrlPicture(String urlPicture) {
-		this.urlPicture = urlPicture;
+	public void setDatePicture(String datePicture) {
+		this.datePicture = datePicture;
+	}
+	public String getLat_Building() {
+		return lat_Building;
+	}
+	public void setLat_Building(String lat_Building) {
+		this.lat_Building = lat_Building;
+	}
+	public String getLong_Building() {
+		return long_Building;
+	}
+	public void setLong_Building(String long_Building) {
+		this.long_Building = long_Building;
 	}
 	public String getNamePackage() {
 		return namePackage;
@@ -17,16 +29,17 @@ public class RetrieveImages {
 	public void setNamePackage(String namePackage) {
 		this.namePackage = namePackage;
 	}
-	public String getDatePicture() {
-		return datePicture;
+	public String getUrlPicture() {
+		return urlPicture;
 	}
-	public void setDatePicture(String datePicture) {
-		this.datePicture = datePicture;
+	public void setUrlPicture(String urlPicture) {
+		this.urlPicture = urlPicture;
 	}
-	public int getCodCleanHouses() {
-		return codCleanHouses;
+	public int getZipCode() {
+		return zipCode;
 	}
-	public void setCodCleanHouses(int codCleanHouses) {
-		this.codCleanHouses = codCleanHouses;
+	public void setZipCode(int zipCode) {
+		this.zipCode = zipCode;
 	}
+	
 }

@@ -21,14 +21,18 @@ public class Retrieves {
 		Connection conn = null;
 		Connect connect = new Connect();
 		
-		String sql = "SELECT distinct Pi.urlPicture, "
-				+ "P.namePackage, "
-				+ "Pi.datePicture, "
-				+ "Pi.codCleanHouses "
-				+ "FROM Pictures as Pi "
-				+ "INNER JOIN Packages as P ON P.codPackage = Pi.codService "
-				+ "WHERE P.codPackage == "
-				+ "(SELECT codPackage FROM Packages WHERE namePackage == '"+namePackage+"');";
+		String sql = "select PI.urlPicture, "
+				+ "PI.datePicture, "
+				+ "BU.zipCode, "
+				+ "BU.lat_Building, "
+				+ "BU.long_Building, "
+				+ "PA.namePackage from Pictures as PI "
+				+ "join CleanHouses as CL on CL.codCleanHouse == PI.codCleanHouse "
+				+ "join Building as BU on BU.id_Building == CL.id_Building "
+				+ "join Packages as PA on PA.codPackage == CL.codPackage\r\n"
+				+ "where PI.codCleanHouse in "
+				+ "(select codCleanHouse from CleanHouses where codPackage in "
+				+ "(select codPackage from Packages where namePackage == '"+namePackage+"'))";
 		
 		
 		try{
@@ -46,7 +50,9 @@ public class Retrieves {
 				RI.setNamePackage(rs.getString("namePackage"));
 				RI.setUrlPicture(rs.getString("urlPicture"));
 				RI.setDatePicture(rs.getString("datePicture"));
-				RI.setCodCleanHouses(rs.getInt("codCleanHouses"));
+				RI.setLat_Building(rs.getString("lat_Building"));
+				RI.setLong_Building(rs.getString("long_Building"));
+				RI.setZipCode(rs.getInt("zipCode"));
 				
 				images.add(RI);				
 			}
