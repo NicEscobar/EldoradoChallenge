@@ -1,0 +1,33 @@
+insert into Pictures (urlPicture, datePicture, codCleanHouses, codService) values ("https://www.google.com/search?q=casa&", "22/02/2022",1,2);
+insert into Pictures (urlPicture, datePicture, codCleanHouses, codService) values ("https://www.google.com/search?q=casa&", "22/02/2022",1,2);
+
+insert into Building (zipCode, lat_Building, long_Building) values (3765000, "-22.2522088" ,"45.708803");
+
+insert into Requesters (phoneNumber, nameRequester, cpf) values (984435050, "Tatiane Escobar" ,11021323412);
+
+insert into CleanHouse_Services (idBuilding, cpf_Requester, long_Service, lat_Service, dateFinished, dateStarted, codleanHouse) 
+    values (1,11021327646,"-22.2522088" ,"45.708803", "22/02/2022","20/02/2022",1);
+
+update Pictures
+set codService = 2 where idPicture == 2
+
+
+select * from Building
+select * from Requesters
+select * from CleanHouse_Services
+select * from Services
+select * from Packages
+select * from Pictures
+
+select R.nameRequester, B.zipCode,B.lat_Building, B.long_Building,CS.lat_Service, CS.long_Service, CS.dateFinished, CS.dateStarted
+, P.namePackage, Pi.urlPicture  from CleanHouse_Services as CS
+left join Packages as P on P.codPackage == CS.codCleanHouse
+left join Pictures as Pi on Pi.codCleanHouses == CS.codCleanHouse
+left join Building as B on CS.idBuilding == B.id_Building
+left join Requesters as R on R.cpf == CS.cpf_Requester
+where dateStarted = '20/02/2022' 
+
+
+select Pi.urlPicture, P.namePackage, Pi.datePicture, Pi.codCleanHouses from Pictures as Pi
+inner join Packages as P on P.codPackage = Pi.codService
+where P.codPackage = (select codPackage from Packages where namePackage == "Return from the ashes 022")
